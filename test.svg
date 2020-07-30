@@ -1,0 +1,201 @@
+<svg width='150' height='150' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
+	<rect x='0' y='0' width='50' height='50' stroke='black' stroke-width='1' fill='white' />
+	<rect x='50' y='0' width='50' height='50' stroke='black' stroke-width='1' fill='white' />
+	<rect x='100' y='0' width='50' height='50' stroke='black' stroke-width='1' fill='white' />
+	<rect x='0' y='50' width='50' height='50' stroke='black' stroke-width='1' fill='white' />
+	<rect x='50' y='50' width='50' height='50' stroke='black' stroke-width='1' fill='white' />
+	<rect x='100' y='50' width='50' height='50' stroke='black' stroke-width='1' fill='white' />
+	<rect x='0' y='100' width='50' height='50' stroke='black' stroke-width='1' fill='white' />
+	<rect x='50' y='100' width='50' height='50' stroke='black' stroke-width='1' fill='white' />
+	<rect x='100' y='100' width='50' height='50' stroke='black' stroke-width='1' fill='white' />
+	<script>
+		<![CDATA[
+		const winCombos = [
+			[0, 1, 2],
+			[3, 4, 5],
+			[6, 7, 8],
+			[0, 3, 6],
+			[1, 4, 7],
+			[2, 5, 8],
+			[0, 4, 8],
+			[6, 4, 2]
+		];
+
+		let gameBoard = [];
+
+		function emptySquares() {
+			let emptySquares = [];
+			for (let i = 0; i <= 9; i++) {
+				if (gameBoard[i] === undefined)
+					emptySquares.push(i);
+			}
+			return emptySquares;
+		}
+		let gameEndCallback;
+
+		function reset() {
+			gameBoard = [];
+		}
+
+		function setField2(idx) {
+			if (gameBoard[idx] !== undefined)
+				return;
+
+			gameBoard[idx] = 1;
+			let gameWon = checkGameEnd(gameBoard, 1);
+			if (gameWon) {
+				console.log(gameWon);
+			} else {
+				let botField = minimax(gameBoard, 2).index;
+				gameBoard[botField] = 2;
+				setField(botField, 'bot')
+				let gameWon = checkGameEnd(gameBoard, 2);
+				if (gameWon) {
+					console.log(gameWon);
+				};
+			}
+		}
+
+		function checkGameEnd(board, player) {
+			let playerTurns = [];
+			/*Get All Fields that the Player played*/
+			for (let i = 0; i < board.length; i++) {
+				if (board[i] === player)
+					playerTurns.push(i);
+			}
+
+			/*Check if the field Combo matches one of the victory-combos*/
+			let gameWon = null;
+			for (let [index, win] of winCombos.entries()) {
+				if (win.every(elem => playerTurns.indexOf(elem) > -1)) {
+					gameWon = {
+						index: index,
+						player: player
+					};
+					break;
+				}
+			}
+
+			if (gameWon === null && emptySquares().length === 0) {
+				gameWon = {
+					index: -1,
+					player: 0
+				}
+			}
+
+			return gameWon;
+		}
+
+		function minimax(newBoard, player) {
+			let availSpots = emptySquares();
+
+			if (availSpots.length === 0) return {
+				score: 0
+			}
+			if (checkGameEnd(newBoard, player)) return {
+				score: -10
+			};
+			if (checkGameEnd(newBoard, 2)) return {
+				score: 10
+			};
+
+
+			var moves = [];
+			for (var i = 0; i < availSpots.length; i++) {
+				let move = {};
+				move.index = availSpots[i];
+				newBoard[availSpots[i]] = player; //setting empty spot on a newBoard to the current player
+
+				let chosenPlayer = (player === 2) ? 1 : 2;
+				move.score = minimax(newBoard, chosenPlayer).score;
+
+				newBoard[availSpots[i]] = undefined; // minimax resets newBoard to what it was before
+
+				moves.push(move); //pushes the move object to the moves array
+			}
+
+			if (player ===
+				2
+				) { //choosing the highest score when AI is playing and the lowest score when the human is playing            
+				var bestScore = -10000; //if the player is AI player, it sets variable bestScore to a very low number
+				for (var i = 0; i < moves.length; i++) { //looping through the moves array
+					if (moves[i].score > bestScore) {
+						bestScore = moves[i].score;
+						bestMove = i;
+					}
+				}
+			} else {
+				var bestScore = 10000;
+				for (var i = 0; i < moves.length; i++) {
+					if (moves[i].score < bestScore) {
+						bestScore = moves[i].score;
+						bestMove = i;
+					}
+				}
+			}
+			return moves[bestMove]; //returning object stored in bestMove
+		}
+
+
+		const rectSize = 50;
+
+		window.addEventListener('DOMContentLoaded', () => {
+			let rects = document.querySelectorAll('rect');
+			for (let i = 0; i < rects.length; i++) {
+				rects[i].onclick = () => setField(i, 'human');
+			}
+		})
+
+		function setField(fieldNr, state) {
+			let svg = document.getElementsByTagName('svg')[0];
+			if (state === 'human') {
+				setField2(fieldNr);
+				svg.appendChild(createCircle(fieldNr));
+			} else {
+				svg.appendChild(createX(fieldNr));
+			}
+		}
+
+		function createCircle(fieldNr) {
+			let coords = getCoordsFromField(fieldNr);
+			let circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+			circle.setAttribute('stroke', 'green');
+			circle.setAttribute('stroke-width', '5');
+			circle.setAttribute('fill', 'none');
+			let cx = 25 + coords.x * rectSize;
+			let cy = 25 + coords.y * rectSize;
+			circle.setAttribute('cx', cx + '');
+			circle.setAttribute('cy', cy + '');
+			circle.setAttribute('r', '15');
+			return circle;
+		}
+
+		function createX(fieldNr) {
+			let coords = getCoordsFromField(fieldNr);
+			let x = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+			x.setAttribute('fill', 'none');
+			x.setAttribute('stroke', 'red');
+			x.setAttribute('width', '45');
+			x.setAttribute('height', '45');
+			x.setAttribute('stroke-width', '5');
+			let topX = 10 + coords.x * rectSize;
+			let topY = 10 + coords.y * rectSize;
+			let xWidth = 30;
+			x.setAttribute('d',
+				`M ${topX},${topY} ${topX + xWidth},${topY + xWidth} M ${topX + xWidth},${topY} ${topX},${topY + xWidth}`);
+			return x;
+		}
+
+		function getCoordsFromField(fieldNr) {
+			if (fieldNr < 0 || fieldNr > 8)
+				return 0;
+			let xIdx = (fieldNr % 3);
+			let yIdx = parseInt(fieldNr / 3);
+			return {
+				x: xIdx,
+				y: yIdx
+			};
+		}
+		]]>
+	</script>
+</svg>
