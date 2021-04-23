@@ -1,16 +1,14 @@
-![](assets/profilemessage.svg)
+![](./assets/profilemessage.svg)
 
 ## Info  
 - 🏫 Currently learning 🧪Elixir and 🐍Python
 - 💻 5 years of programming experience
-- 📚 Likes reading Sci-Fi and Fantasy novels (Always open for suggestions)
-- 🎥 Hooked on WandaVision
-- 🎮 Looses Track of time when playing strategy and sandbox games
+- 📚 Likes reading Sci-Fi and Fantasy novels
 - 💬 Ask me about C# and CI/CD using Github Actions
 ## How to reach me
 [![](https://img.shields.io/badge/-Send_Me_Memes_Discord-7289da?style=for-the-badge&logo=discord&logoColor=white)](https://discordapp.com/users/234013115187068929/)
 [![](https://img.shields.io/badge/-Say_Hi_on_Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/Lukas_Schaffer_)
-* To prevent bots that web-crawl github to get my email for spam purposes, you need to log in to see my mail.
+* To prevent bots that crawl github to get my email for spam purposes, you need to log in to see my mail.
 ## OS & Tools I use frequently
 ![](https://img.shields.io/badge/-Windows-00a2ed?style=flat&logo=microsoft&logoColor=white)
 ![](https://img.shields.io/badge/-WSL-999?style=flat&logo=gnu-bash&logoColor=white)
