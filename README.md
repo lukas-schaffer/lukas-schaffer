@@ -1,15 +1,20 @@
 ![](./assets/profilemessage.svg)
 
-## Info  
-- 🏫 Currently learning 🧪Elixir and 🐍Python
-- 💻 5 years of programming experience
+## Info
+
+- 🏫 Currently learning 🧪Elixir and 🐦Flutter
 - 📚 Likes reading Sci-Fi and Fantasy novels
-- 💬 Ask me about C# and CI/CD using Github Actions
+- 💬 Talk to me about C# and CI/CD using Github Actions
+
 ## How to reach me
-[![](https://img.shields.io/badge/-Send_Me_Memes_Discord-7289da?style=for-the-badge&logo=discord&logoColor=white)](https://discordapp.com/users/234013115187068929/)
+
+[![](https://img.shields.io/badge/-Send_me_funny_memes_on_discord-7289da?style=for-the-badge&logo=discord&logoColor=white)](https://discordapp.com/users/234013115187068929/)
 [![](https://img.shields.io/badge/-Say_Hi_on_Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/Lukas_Schaffer_)
-* To prevent bots that crawl github to get my email for spam purposes, you need to log in to see my mail.
+
+- To prevent bots that crawl github to get my email for spam purposes, you need to log in to see my mail.
+
 ## OS & Tools I use frequently
+
 ![](https://img.shields.io/badge/-Windows-00a2ed?style=flat&logo=microsoft&logoColor=white)
 ![](https://img.shields.io/badge/-WSL-999?style=flat&logo=gnu-bash&logoColor=white)
 
@@ -19,9 +24,11 @@
 ![](https://img.shields.io/badge/-Docker-2496ED?style=flat&logo=docker&logoColor=white)
 
 ## Favorite Programming & Markdown Languages
-![](https://img.shields.io/badge/-C_%23-239120?style=for-the-badge&logo=C-Sharp&logoColor=white)
+
+![](https://img.shields.io/badge/-C_%23-5849BE?style=for-the-badge&logo=C-Sharp&logoColor=white)
 ![](https://img.shields.io/badge/-Javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![](https://img.shields.io/badge/-Java-0084A7?style=for-the-badge&logo=java&logoColor=white)
+![](https://img.shields.io/badge/-Java-0084A7?style=for-the-badge&logo=java)
+![](https://img.shields.io/badge/-Flutter-42A5F5?style=for-the-badge&logo=flutter)
 
 ![](https://img.shields.io/badge/-Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white)
 ![](https://img.shields.io/badge/-Latex-008080?style=for-the-badge&logo=latex&logoColor=white)
